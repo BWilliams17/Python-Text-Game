@@ -48,7 +48,7 @@ def main():
          else:
            print("\nThat is not an option.")
         if key1==1:
-          print("You have already conquered this room.")
+          print("\nYou have already conquered this room.")
           direction1=input("Where do you want to go?\n\n")
      elif direction1=="Two":
         print("\nYou walk through door Two.")
@@ -59,7 +59,7 @@ def main():
           print("All about, but cannot be seen, Can be captured, cannot be held.")
           print("\nYou can either type; Answer or Hub.\n")
           action2=input("What do you do?\n\n")
-          if action2=="Answer\n":
+          if action2=="Answer":
             answer2=input("\nWhat is your answer?\n\n")
             if answer2=="Wind":
              key2=1
@@ -86,8 +86,8 @@ def main():
           else:
            print("\nThat is not an option.\n")
         if key2==1:
-          print("You have already conquered this room.")
-          direction1=input("Where do you want to go?")
+          print("\nYou have already conquered this room.")
+          direction1=input("Where do you want to go?\n\n")
      elif direction1=="Three":
         print("You walk through door Three.")
         if key3==0:
@@ -124,18 +124,19 @@ def main():
               print("\nThat is not an option.")
         if key3==1:
            print("\nYou have already conquered this room.")
-           direction1=input("Where do you want to go?")
+           direction1=input("Where do you want to go?\n\n")
      elif direction1=="Four":
-        print("You walk through door 4.")
+        print("\nYou walk through door four.")
         if key4==0:
            print("\nYou walk through the door stepping into a room filled with dirt and grass.")
            print("A message reveals itself infront of you, it reads:")
            print("The more you take, The more you leave behind.")
            print("\nYou can either type; Answer or Hub.")
-           action4=input("What do you do?\n\n")
+           action4=input("\nWhat do you do?\n\n")
            if action4=="Answer":
               answer4=input("\nWhat is your answer?\n\n")
               if answer4=="Footprints":
+                 key4=1
                  print("\nGrass suddenly grows over the dirt areas.")
                  print("A light grows in the Hub room.")
                  print("\nYou have unlocked key4 and cleared a room.")
@@ -163,7 +164,7 @@ def main():
            print("\nYou have already conquered this room.")
            direction1=input("Where do you want to go?\n\n")
      elif direction1=="Hub":
-        print("You are already in the Hub room.")
+        print("\nYou are already in the Hub room.")
         direction1=input("Where do you want to go?\n\n")
      else:
         print("\nThere is no door in that direction and you have walked into a solid wall")
@@ -173,9 +174,9 @@ def main():
          print("You have just died")
          break
         print(f"You have {lives} lives remaining\n\n")
+        if key1 == key2 == key3 == key4 == 1: 
+         print("A spiral staircase reveals itself in the hub room leading upwards.\nYou end up on the surface int he middle of an open grass plain.")
+         print("\n\nYou have beaten the game, CONGRATULATIONS!")
+         break
         direction1=input("Which direction do you want to go?\n\n")
-    if key1==1 and key2==1 and key3==1 and key4==1: 
-     print("A spiral staircase reveals itself in the hub room leading upwards.\nYou end up on the surface int he middle of an open grass plain.")
-     print("\n\nYou have beaten the game, CONGRATULATIONS!")
-     exit()
 main()
