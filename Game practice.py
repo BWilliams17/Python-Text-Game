@@ -4,6 +4,8 @@ def main():
     key3=0
     key4=0
 
+    pocket=[]
+
     print("Welcome to the game")
     player_name=input("What is your name?\n\n")
     print("\nHi "+player_name)
@@ -11,8 +13,8 @@ def main():
     print(f"You have {lives} lives remaining")
     print("\nYou wake up in the middle of a room with no recollection of anything before that.")
     print("There are four doors presented to you, One, Two, Three, Four.")
-    direction1=input("Which direction do you want to go?\n\n")
-    while direction1 != "One"+"Two"+"Three"+"Four":
+    while True:
+     direction1=input("Which direction do you want to go?\n\n")
      if direction1== "One":
         print("\nYou walk through door One")
         if key1==0:
@@ -25,6 +27,7 @@ def main():
            answer=input("\nWhat is your answer?\n\n")
            if answer=="Snowman":
             key1=1
+            pocket.append(key1)
             print("\nThe flame distinguishes and a light glows in the middle room.")
             print("A light grows in the Hub room.")
             print("\nYou have unlocked key1 and cleared a room.")
@@ -62,7 +65,8 @@ def main():
           if action2=="Answer":
             answer2=input("\nWhat is your answer?\n\n")
             if answer2=="Wind":
-             key2=1
+             key2=2
+             pocket.append(key2)
              print("\nThe flow of wind suddenly diminishes.")
              print("A light grows in the Hub room.")
              print("\nYou have unlocked key2 and cleared a room.")
@@ -85,7 +89,7 @@ def main():
            direction1=input("Where do you want to go?\n\n")
           else:
            print("\nThat is not an option.\n")
-        if key2==1:
+        if key2==2:
           print("\nYou have already conquered this room.")
           direction1=input("Where do you want to go?\n\n")
      elif direction1=="Three":
@@ -99,7 +103,8 @@ def main():
            if action3=="Answer":
               answer3=input("\nWhat is your answer?\n\n")
               if answer3=="Waterfall":
-                 key3=1
+                 key3=3
+                 pocket.append(key3)
                  print("\nThe waterfall stops flowing and everything becomes silent.")
                  print("A light grows in the Hub room.")
                  print("\nYou have unlocked key3 and cleared a room.")
@@ -122,7 +127,7 @@ def main():
               direction1=input("Where do you want to go?\n\n")
            else:
               print("\nThat is not an option.")
-        if key3==1:
+        if key3==3:
            print("\nYou have already conquered this room.")
            direction1=input("Where do you want to go?\n\n")
      elif direction1=="Four":
@@ -136,7 +141,8 @@ def main():
            if action4=="Answer":
               answer4=input("\nWhat is your answer?\n\n")
               if answer4=="Footprints":
-                 key4=1
+                 key4=4
+                 pocket.append(key4)
                  print("\nGrass suddenly grows over the dirt areas.")
                  print("A light grows in the Hub room.")
                  print("\nYou have unlocked key4 and cleared a room.")
@@ -160,7 +166,7 @@ def main():
            else:
               print("That is not an option.")
               action4=input("What do you want to do?")
-        if key4==1:
+        if key4==4:
            print("\nYou have already conquered this room.")
            direction1=input("Where do you want to go?\n\n")
      elif direction1=="Hub":
@@ -174,9 +180,9 @@ def main():
          print("You have just died")
          break
         print(f"You have {lives} lives remaining\n\n")
-        if key1 == key2 == key3 == key4 == 1: 
-         print("A spiral staircase reveals itself in the hub room leading upwards.\nYou end up on the surface int he middle of an open grass plain.")
-         print("\n\nYou have beaten the game, CONGRATULATIONS!")
-         break
         direction1=input("Which direction do you want to go?\n\n")
+     if ("1" in pocket) and ("2" in pocket) and ("3" in pocket) and ("4" in pocket):
+      print("A spiral staircase reveals itself in the hub room leading upwards.\nYou end up on the surface in the middle of an open grass plain.")
+      print("\n\nYou have beaten the game, CONGRATULATIONS!")
+      break
 main()
