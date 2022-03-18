@@ -12,9 +12,9 @@ def main():
     lives=3
     print(f"You have {lives} lives remaining")
     print("\nYou wake up in the middle of a room with no recollection of anything before that.")
-    print("There are four doors presented to you, One, Two, Three, Four.")
+    print("There are four doors presented to you, One, Two, Three, Four and Exit.")
 
-    def in_room(pocket,lives,door_number,key1,puzzle,answer,answer_solution):
+    def in_room(pocket,lives,door_number,key1,puzzle,answer,answer_solution,key_aquired):
       print(f"\nYou walk through door {door_number}\n")
       if key1==0:
          print(f"{puzzle}")
@@ -25,8 +25,9 @@ def main():
            answer_guess=input("\nWhat is your answer?\n\n")
            if answer_guess == answer:
             key1=1
-            pocket.append("key 1")
+            pocket.append(f"{key_aquired}")
             print(f"{answer_solution}")
+
             direction2=input("Where do you want to go? \n\nYou can go to: Hub\n\n")
             if direction2==("Hub"):
              print("\nYou walk back to the Hub")
@@ -45,35 +46,55 @@ def main():
     while True:
      direction1=input("Which direction do you want to go?\n\n")
 
-     if direction1== "One":
+     if direction1 == "Exit":
+      if ("Key 1" in pocket) and ("Key 2" in pocket) and ("Key 3" in pocket) and ("Key 4" in pocket):
+       print("\nA spiral staircase reveals itself in the hub room leading upwards.\nYou end up on the surface in the middle of an open grass plain.")
+       print("\nYou have beaten the game, CONGRATULATIONS!")
+       quit()
+      else:
+        print("\nAYou have not aquired all the keys yet.\n")
+
+     elif direction1== "One":
         door_number = "One"
         key1 = 0
         puzzle = "You walk into a room and filled with the immense hear of fire embers floating aroud the room.\nA message reveals itself over a roaring flame.\nIt reads: There is a man that can never enjoy the fireplace, Who is this man?\nYou can either type; Answer or Hub.\n"
         answer = "Snowman"
-        key_number = "key1"
+        key_aquired = "Key 1"
+        key_number = "Key1"
         answer_solution = f"\nThe flame distinguishes and a light glows in the middle room.\nA light grows in the Hub room.\nYou have unlocked {key_number} and cleared a room."
-        lives = in_room(pocket,lives,door_number,key1,puzzle,answer,answer_solution)
+        lives = in_room(pocket,lives,door_number,key1,puzzle,answer,answer_solution,key_aquired)
 
      elif direction1=="Two":
         door_number = "Two"
-        in_room(pocket,lives,door_number)
+        key1 = 0
+        puzzle = "\nAs you walk into the room a gust of wind almost knocks you off your balance.\nA strong current can be felt coming out of a crack in the wall infront of you.\nA message reveals itself infront of you, it reads:\nAll about, but cannot be seen, Can be captured, cannot be held.\n\nYou can either type; Answer or Hub.\n"
+        answer = "Wind"
+        key_number = "Key2"
+        key_aquired = "Key 2"
+        answer_solution = f"\nThe flow of wind suddenly diminishes.\nA light grows in the Hub room.\nYou have unlocked {key_aquired} and cleared a room."
+        in_room(pocket,lives,door_number,key1,puzzle,answer,answer_solution,key_aquired)
 
      elif direction1=="Three":
         door_number = "Three"
-        in_room(pocket,lives,door_number)
+        puzzle = "\nYou walk into the room with water filled to your ankle height.\nWater seems to be puring out from a high hole however the water never rises or lowers.\nA message appears infront of you, it reads:\nBright as diamonds, Loud as thunder, What am i?\nYou can either type; Answer or Hub."
+        answer = "Waterfall"
+        key_aquired = "Key 3"
+        key_number = "Key3"
+        answer_solution = f"\nThe waterfall stops flowing and everything becomes silent.\nA light grows in the Hub room.\nYou have unlocked key3 and cleared a room."
+        in_room(pocket,lives,door_number,key1,puzzle,answer,answer_solution,key_aquired)
 
      elif direction1=="Four":
         door_number = "Four"
-        in_room(pocket,lives,door_number)
+        puzzle = "\nYou walk through the door stepping into a room filled with dirt and grass.\nA message reveals itself infront of you, it reads:\nThe more you take, The more you leave behind.\nYou can either type; Answer or Hub."
+        answer = "Footprints"
+        key_aquired = "Key 4"
+        key_number = "key4"
+        answer_solution = "\nGrass suddenly grows over the dirt areas.\nA light grows in the Hub room.\nYou have unlocked key4 and cleared a room."
+        in_room(pocket,lives,door_number,key1,puzzle,answer,answer_solution,key_aquired)
 
      elif direction1=="Hub":
         print("\nYou are already in the Hub room.")
         direction1=input("Where do you want to go?\n\n")
-
-     elif ("Key1" in pocket) and ("Key2" in pocket) and ("Key3" in pocket) and ("Key4" in pocket):
-      print("A spiral staircase reveals itself in the hub room leading upwards.\nYou end up on the surface in the middle of an open grass plain.")
-      print("\n\nYou have beaten the game, CONGRATULATIONS!")
-      break
 
      else:
         print("\nThere is no door in that direction and you have walked into a solid wall")
