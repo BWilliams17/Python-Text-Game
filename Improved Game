@@ -1,4 +1,48 @@
-while True:
+def main():
+    key1=0
+    key2=0
+    key3=0
+    key4=0
+
+    pocket=[]
+
+    print("Welcome to the game")
+    player_name=input("What is your name?\n\n")
+    print("\nHi "+player_name)
+    lives=3
+    print(f"You have {lives} lives remaining")
+    print("\nYou wake up in the middle of a room with no recollection of anything before that.")
+    print("There are four doors presented to you, One, Two, Three, Four.")
+
+    def in_room(pocket,lives,door_number,key1,puzzle,answer,answer_solution):
+      print(f"\nYou walk through door {door_number}\n")
+      if key1==0:
+         print(f"{puzzle}")
+         action1=input("What do you do?\n\n")
+         if action1=="Answer":
+           if key1==1:
+            print("You have already completed this room")
+           answer_guess=input("\nWhat is your answer?\n\n")
+           if answer_guess == answer:
+            key1=1
+            pocket.append("key 1")
+            print(f"{answer_solution}")
+            direction2=input("Where do you want to go? \n\nYou can go to: Hub\n\n")
+            if direction2==("Hub"):
+             print("\nYou walk back to the Hub")
+           else:  
+            print("\nYour answer is wrong, You lose a life.\n\n")
+            lives-=1
+            if lives<=0:
+             print("You have just died.")
+             exit()
+            print(f"You have {lives} lives remaining.\n")
+            return lives
+         elif action1=="Hub":
+           print("You walk back to the Hub\n\n")
+
+
+    while True:
      direction1=input("Which direction do you want to go?\n\n")
 
      if direction1== "One":
@@ -8,7 +52,7 @@ while True:
         answer = "Snowman"
         key_number = "key1"
         answer_solution = f"\nThe flame distinguishes and a light glows in the middle room.\nA light grows in the Hub room.\nYou have unlocked {key_number} and cleared a room."
-        in_room(pocket,lives,door_number,key1,puzzle,answer,answer_solution)
+        lives = in_room(pocket,lives,door_number,key1,puzzle,answer,answer_solution)
 
      elif direction1=="Two":
         door_number = "Two"
@@ -39,7 +83,6 @@ while True:
          print("You have just died")
          break
         print(f"You have {lives} lives remaining\n\n")
-        direction1=input("Which direction do you want to go?\n\n")
 
 
 
