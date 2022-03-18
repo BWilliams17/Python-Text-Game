@@ -1,0 +1,46 @@
+while True:
+     direction1=input("Which direction do you want to go?\n\n")
+
+     if direction1== "One":
+        door_number = "One"
+        key1 = 0
+        puzzle = "You walk into a room and filled with the immense hear of fire embers floating aroud the room.\nA message reveals itself over a roaring flame.\nIt reads: There is a man that can never enjoy the fireplace, Who is this man?\nYou can either type; Answer or Hub.\n"
+        answer = "Snowman"
+        key_number = "key1"
+        answer_solution = f"\nThe flame distinguishes and a light glows in the middle room.\nA light grows in the Hub room.\nYou have unlocked {key_number} and cleared a room."
+        in_room(pocket,lives,door_number,key1,puzzle,answer,answer_solution)
+
+     elif direction1=="Two":
+        door_number = "Two"
+        in_room(pocket,lives,door_number)
+
+     elif direction1=="Three":
+        door_number = "Three"
+        in_room(pocket,lives,door_number)
+
+     elif direction1=="Four":
+        door_number = "Four"
+        in_room(pocket,lives,door_number)
+
+     elif direction1=="Hub":
+        print("\nYou are already in the Hub room.")
+        direction1=input("Where do you want to go?\n\n")
+
+     elif ("Key1" in pocket) and ("Key2" in pocket) and ("Key3" in pocket) and ("Key4" in pocket):
+      print("A spiral staircase reveals itself in the hub room leading upwards.\nYou end up on the surface in the middle of an open grass plain.")
+      print("\n\nYou have beaten the game, CONGRATULATIONS!")
+      break
+
+     else:
+        print("\nThere is no door in that direction and you have walked into a solid wall")
+        print("You lose a life")
+        lives -=1
+        if lives<=0:
+         print("You have just died")
+         break
+        print(f"You have {lives} lives remaining\n\n")
+        direction1=input("Which direction do you want to go?\n\n")
+
+
+
+main()
