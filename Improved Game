@@ -1,3 +1,4 @@
+import time
 def main():
     key1=0
     key2=0
@@ -14,8 +15,11 @@ def main():
     print("\nYou wake up in the middle of a room with no recollection of anything before that.")
     print("There are four doors presented to you, One, Two, Three, Four and Exit.")
 
-    def in_room(pocket,lives,door_number,key1,puzzle,answer,answer_solution,key_aquired):
+    def in_room(pocket,lives,door_number,key1,puzzle,answer,answer_solution,key_aquired,trap):
       print(f"\nYou walk through door {door_number}\n")
+      # start the timer
+      time_elapsed = time.time()
+      # if 30 seconds has passed, lose life
       if f"{key_aquired}" in pocket:
           print("\nYou have already completed this room.\n")
       if f"{key_aquired}" not in pocket:
@@ -24,7 +28,6 @@ def main():
          if action1=="Answer":
            answer_guess=input("\nWhat is your answer?\n\n")
            if answer_guess == answer:
-            key1=1
             pocket.append(f"{key_aquired}")
             print(f"{answer_solution}")
             direction2=input("\nWhere do you want to go? \n\nYou can go to: Hub\n\n")
@@ -44,7 +47,9 @@ def main():
 
 
     while True:
-     direction1=input("Which door do you want to go in?\n\n")
+     direction1=input("\nWhich door do you want to go in?\n\n")
+
+     # Directions of doors
 
      if direction1 == "Exit":
       if ("Key 1" in pocket) and ("Key 2" in pocket) and ("Key 3" in pocket) and ("Key 4" in pocket):
@@ -52,7 +57,7 @@ def main():
        print("\nYou have beaten the game, CONGRATULATIONS!")
        quit()
       else:
-        print("\nAYou have not aquired all the keys yet.\n")
+        print("\nYou have not acquired all the keys yet.\n")
 
      elif direction1== "One":
         door_number = "One"
@@ -61,8 +66,9 @@ def main():
         answer = "Snowman"
         key_aquired = "Key 1"
         key_number = "Key1"
+        trap = 0
         answer_solution = f"\nThe flame distinguishes and a light glows in the middle room.\nA light grows in the Hub room.\n\nYou have unlocked {key_number} and cleared a room."
-        lives = in_room(pocket,lives,door_number,key1,puzzle,answer,answer_solution,key_aquired)
+        lives = in_room(pocket,lives,door_number,key1,puzzle,answer,answer_solution,key_aquired,trap)
 
      elif direction1=="Two":
         door_number = "Two"
@@ -71,8 +77,9 @@ def main():
         answer = "Wind"
         key_number = "Key2"
         key_aquired = "Key 2"
+        trap = 1
         answer_solution = f"\nThe flow of wind suddenly diminishes.\nA light grows in the Hub room.\nYou have unlocked {key_aquired} and cleared a room."
-        in_room(pocket,lives,door_number,key1,puzzle,answer,answer_solution,key_aquired)
+        in_room(pocket,lives,door_number,key1,puzzle,answer,answer_solution,key_aquired,trap)
 
      elif direction1=="Three":
         door_number = "Three"
@@ -80,8 +87,9 @@ def main():
         answer = "Waterfall"
         key_aquired = "Key 3"
         key_number = "Key3"
+        trap = 0
         answer_solution = f"\nThe waterfall stops flowing and everything becomes silent.\nA light grows in the Hub room.\nYou have unlocked key3 and cleared a room."
-        in_room(pocket,lives,door_number,key1,puzzle,answer,answer_solution,key_aquired)
+        in_room(pocket,lives,door_number,key1,puzzle,answer,answer_solution,key_aquired,trap)
 
      elif direction1=="Four":
         door_number = "Four"
@@ -89,12 +97,13 @@ def main():
         answer = "Footprints"
         key_aquired = "Key 4"
         key_number = "key4"
+        trap = 0
         answer_solution = "\nGrass suddenly grows over the dirt areas.\nA light grows in the Hub room.\nYou have unlocked key4 and cleared a room."
-        in_room(pocket,lives,door_number,key1,puzzle,answer,answer_solution,key_aquired)
+        in_room(pocket,lives,door_number,key1,puzzle,answer,answer_solution,key_aquired,trap)
 
      elif direction1=="Hub":
         print("\nYou are already in the Hub room.")
         direction1=input("Where do you want to go?\n\n")
-       
-       
+
+
 main()
